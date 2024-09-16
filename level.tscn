@@ -1,44 +1,47 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=14 format=3 uid="uid://b8gk18etyb7f5"]
 
+[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_a61xp"]
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
-[ext_resource type="PackedScene" uid="uid://oqeg5ndbxii1" path="res://models/lowpoly_train_rails.glb" id="2_dga3g"]
-[ext_resource type="PackedScene" uid="uid://c3i62ihc0cees" path="res://models/train.glb" id="3_vm7jp"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_708if"]
+[ext_resource type="PackedScene" uid="uid://b608ntyxfaa6q" path="res://models/traintrack-switch.glb" id="4_75304"]
+[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://train.tscn" id="4_fxm5q"]
+[ext_resource type="Script" path="res://scripts/train.gd" id="6_t74b4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bxyxv"]
-sky_top_color = Color(0.677272, 0.791845, 0.927559, 1)
-sky_horizon_color = Color(0.76728, 0.796232, 0.831004, 1)
-ground_bottom_color = Color(0.391847, 0.393082, 0.396458, 1)
-ground_horizon_color = Color(0.76728, 0.796232, 0.831004, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
+panorama = ExtResource("1_a61xp")
 
-[sub_resource type="Sky" id="Sky_3twfj"]
-sky_material = SubResource("ProceduralSkyMaterial_bxyxv")
+[sub_resource type="Sky" id="Sky_ekdab"]
+sky_material = SubResource("PanoramaSkyMaterial_hicgy")
 
-[sub_resource type="Environment" id="Environment_mf8uj"]
+[sub_resource type="Environment" id="Environment_1x41d"]
 background_mode = 2
-sky = SubResource("Sky_3twfj")
-tonemap_mode = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_63wgi"]
-
-[sub_resource type="Skin" id="Skin_dg3rn"]
+sky = SubResource("Sky_ekdab")
+ambient_light_source = 1
+reflected_light_source = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg7ml"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pb5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0unw"]
+albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2fjx8"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mf8uj")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.309204, -0.392928, 0, -0.785857, 0.618408, -0.5, 0.535557, 0.680572, 0, 4.93157, 4.41881)
-light_color = Color(0.144063, 0.144063, 0.144063, 1)
-light_energy = 0.222
+[node name="Dir_light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.973568, -0.161079, -0.161925, 0.228284, 0.663766, 0.712251, -0.00724825, -0.73039, 0.682992, -5.83962, 3.765, 3.05117)
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.444
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1x41d")
 
 [node name="Player" parent="." instance=ExtResource("1_aiox2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.070962, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00480795, 0.070962, 0.00105715)
+script = ExtResource("3_708if")
 
 [node name="CamPivot" type="Marker3D" parent="."]
 
@@ -48,25 +51,24 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, 0.587785, 0, -0.587785, 0.809017, 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(40.365, 0, 0, 0, 0.1, 0, 0, 0, 12.96, 0, -0.05, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("BoxMesh_63wgi")
-skin = SubResource("Skin_dg3rn")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_cg7ml")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-06, 0)
+mesh = SubResource("BoxMesh_2pb5k")
+surface_material_override/0 = SubResource("StandardMaterial3D_x0unw")
 
-[node name="Sketchfab_Scene" parent="StaticBody3D" instance=ExtResource("2_dga3g")]
-transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.0567106, -1.17416)
+[node name="Railway" type="StaticBody3D" parent="."]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Railway"]
 transform = Transform3D(100.735, 0, 0, 0, 0.16, 0, 0, 0, 0.53, 0, 0, -0.998465)
 shape = SubResource("BoxShape3D_2fjx8")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1.16, 0, 0, 0, 1.16, 0, 0, 0, 1.16, 0.00704145, 0.105, -0.30484)
+[node name="traintrack-switch" parent="Railway" instance=ExtResource("4_75304")]
+transform = Transform3D(-9.39795e-09, 0, -0.215, 0, 0.215, 0, 0.215, 0, -9.39795e-09, -3.86119, 0, -0.993358)
 
-[node name="train" parent="StaticBody3D2" instance=ExtResource("3_vm7jp")]
-transform = Transform3D(-2.40413e-09, 0, 0.055, 0, 0.055, 0, -0.055, 0, -2.40413e-09, 0.00363088, -0.00746989, -1.02206)
+[node name="Train" parent="." instance=ExtResource("4_fxm5q")]
+transform = Transform3D(-2.62268e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.62268e-09, -23.6294, 0.0943035, -1.6164)
+script = ExtResource("6_t74b4")

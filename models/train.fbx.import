@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8joohelxi85d"
-path="res://.godot/imported/train.glb-8a370165a0df955b4d8a0434700b30c6.scn"
+uid="uid://raeeslwkva80"
+path="res://.godot/imported/train.fbx-3ac14b2ca6c1e52ec3ee95e3956d5b5b.scn"
 
 [deps]
 
-source_file="res://models/train.glb"
-dest_files=["res://.godot/imported/train.glb-8a370165a0df955b4d8a0434700b30c6.scn"]
+source_file="res://models/train.fbx"
+dest_files=["res://.godot/imported/train.fbx-3ac14b2ca6c1e52ec3ee95e3956d5b5b.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

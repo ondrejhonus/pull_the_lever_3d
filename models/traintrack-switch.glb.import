@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8joohelxi85d"
-path="res://.godot/imported/train.glb-8a370165a0df955b4d8a0434700b30c6.scn"
+uid="uid://b608ntyxfaa6q"
+path="res://.godot/imported/traintrack-switch.glb-b1c9d6fbbd4bbafd5c1821dd84ae7c47.scn"
 
 [deps]
 
-source_file="res://models/train.glb"
-dest_files=["res://.godot/imported/train.glb-8a370165a0df955b4d8a0434700b30c6.scn"]
+source_file="res://models/traintrack-switch.glb"
+dest_files=["res://.godot/imported/traintrack-switch.glb-b1c9d6fbbd4bbafd5c1821dd84ae7c47.scn"]
 
 [params]
 
