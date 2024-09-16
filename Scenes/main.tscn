@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8gk18etyb7f5"]
 
-[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_a61xp"]
-[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_708if"]
-[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://train.tscn" id="4_fxm5q"]
-[ext_resource type="Script" path="res://scripts/train.gd" id="6_t74b4"]
-[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://lever.tscn" id="7_k20qa"]
+[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_pxjb0"]
+[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://Scenes/player.tscn" id="2_p5sns"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_7ae03"]
+[ext_resource type="PackedScene" path="res://Scenes/train.tscn" id="4_1gbqm"]
+[ext_resource type="Script" path="res://scripts/train.gd" id="5_lmkh5"]
+[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://Scenes/lever.tscn" id="6_r228n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
-panorama = ExtResource("1_a61xp")
+panorama = ExtResource("1_pxjb0")
 
 [sub_resource type="Sky" id="Sky_ekdab"]
 sky_material = SubResource("PanoramaSkyMaterial_hicgy")
@@ -43,9 +43,9 @@ shadow_normal_bias = 1.444
 [node name="env" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1x41d")
 
-[node name="Player" parent="." instance=ExtResource("1_aiox2")]
+[node name="Player" parent="." instance=ExtResource("2_p5sns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00480795, 0.070962, 0.00105715)
-script = ExtResource("3_708if")
+script = ExtResource("3_7ae03")
 
 [node name="CamPivot" type="Marker3D" parent="."]
 
@@ -63,15 +63,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-06, 0)
 mesh = SubResource("BoxMesh_2pb5k")
 surface_material_override/0 = SubResource("StandardMaterial3D_x0unw")
 
-[node name="Train" parent="." instance=ExtResource("4_fxm5q")]
+[node name="Train" parent="." instance=ExtResource("4_1gbqm")]
 transform = Transform3D(-2.62268e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.62268e-09, -18.6491, 0.0534265, -0.572064)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("6_t74b4")
+script = ExtResource("5_lmkh5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="Tracks" parent="StaticBody3D" instance=ExtResource("7_k20qa")]
+[node name="Tracks" parent="StaticBody3D" instance=ExtResource("6_r228n")]
 transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -5.97265, -0.0321507, -0.553017)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
