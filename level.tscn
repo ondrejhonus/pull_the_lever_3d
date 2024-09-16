@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=11 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
 [ext_resource type="PackedScene" uid="uid://oqeg5ndbxii1" path="res://models/lowpoly_train_rails.glb" id="2_dga3g"]
+[ext_resource type="PackedScene" uid="uid://c3i62ihc0cees" path="res://models/train.glb" id="3_vm7jp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bxyxv"]
 sky_top_color = Color(0.677272, 0.791845, 0.927559, 1)
@@ -33,7 +34,7 @@ environment = SubResource("Environment_mf8uj")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.309204, -0.392928, 0, -0.785857, 0.618408, -0.5, 0.535557, 0.680572, 0, 4.93157, 4.41881)
 light_color = Color(0.144063, 0.144063, 0.144063, 1)
-light_energy = 4.0
+light_energy = 0.222
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_aiox2")]
@@ -55,6 +56,7 @@ skin = SubResource("Skin_dg3rn")
 shape = SubResource("BoxShape3D_cg7ml")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.495, 0, 0, 0, 1.495, 0, 0, 0, 1.495, 0, 0, 0)
 
 [node name="Sketchfab_Scene" parent="StaticBody3D" instance=ExtResource("2_dga3g")]
 transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.0567106, -1.17416)
@@ -62,3 +64,9 @@ transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.0567106, -1.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(100.735, 0, 0, 0, 0.16, 0, 0, 0, 0.53, 0, 0, -0.998465)
 shape = SubResource("BoxShape3D_2fjx8")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1.16, 0, 0, 0, 1.16, 0, 0, 0, 1.16, 0.00704145, 0.105, -0.30484)
+
+[node name="train" parent="StaticBody3D2" instance=ExtResource("3_vm7jp")]
+transform = Transform3D(-2.40413e-09, 0, 0.055, 0, 0.055, 0, -0.055, 0, -2.40413e-09, 0.00363088, -0.00746989, -1.02206)
