@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=15 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_a61xp"]
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_708if"]
-[ext_resource type="PackedScene" uid="uid://b608ntyxfaa6q" path="res://models/traintrack-switch.glb" id="4_75304"]
 [ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://train.tscn" id="4_fxm5q"]
 [ext_resource type="Script" path="res://scripts/train.gd" id="6_t74b4"]
+[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://lever.tscn" id="7_k20qa"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
 panorama = ExtResource("1_a61xp")
@@ -26,7 +26,11 @@ reflected_light_source = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0unw"]
 albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2fjx8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7w1ub"]
+size = Vector3(0.604584, 0.266113, 0.281143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wh8c7"]
+size = Vector3(51.8392, 1.93372, 1.72168)
 
 [node name="Node3D" type="Node3D"]
 
@@ -59,16 +63,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-06, 0)
 mesh = SubResource("BoxMesh_2pb5k")
 surface_material_override/0 = SubResource("StandardMaterial3D_x0unw")
 
-[node name="Railway" type="StaticBody3D" parent="."]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Railway"]
-transform = Transform3D(100.735, 0, 0, 0, 0.16, 0, 0, 0, 0.53, 0, 0, -0.998465)
-shape = SubResource("BoxShape3D_2fjx8")
-
-[node name="traintrack-switch" parent="Railway" instance=ExtResource("4_75304")]
-transform = Transform3D(-9.39795e-09, 0, -0.215, 0, 0.215, 0, 0.215, 0, -9.39795e-09, -3.86119, 0, -0.993358)
-
 [node name="Train" parent="." instance=ExtResource("4_fxm5q")]
-transform = Transform3D(-2.62268e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.62268e-09, -23.6294, 0.0943035, -1.6164)
+transform = Transform3D(-2.62268e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.62268e-09, -18.6491, 0.0534265, -0.572064)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("6_t74b4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Tracks" parent="StaticBody3D" instance=ExtResource("7_k20qa")]
+transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -5.97265, -0.0321507, -0.553017)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97606, 0.102783, 0.273155)
+shape = SubResource("BoxShape3D_7w1ub")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76959, 0.466858, -1.12299)
+shape = SubResource("BoxShape3D_wh8c7")

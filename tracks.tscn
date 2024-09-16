@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc3hk862kyb3n"]
+
+[ext_resource type="PackedScene" uid="uid://b608ntyxfaa6q" path="res://models/traintrack-switch.glb" id="1_2dh88"]
+[ext_resource type="PackedScene" uid="uid://bgxj5mgqbxd6f" path="res://models/traintrack-switch-pulled.glb" id="2_hb6k3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="traintrack-switch" parent="." instance=ExtResource("1_2dh88")]
+visible = false
+
+[node name="traintrack-switch-pulled" parent="." instance=ExtResource("2_hb6k3")]

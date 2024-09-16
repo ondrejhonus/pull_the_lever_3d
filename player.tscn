@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://pen7cop4xhge"]
+[gd_scene load_steps=5 format=3 uid="uid://pen7cop4xhge"]
 
 [ext_resource type="PackedScene" uid="uid://q5atrb8ghjqe" path="res://models/stickman_low_poly.glb" id="1_kbe3k"]
+[ext_resource type="PackedScene" uid="uid://c4q824gj686dl" path="res://player_interactor.tscn" id="2_k5mi5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36twi"]
+size = Vector3(0.313965, 0.593262, 0.764648)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqo6f"]
 
@@ -11,6 +15,15 @@
 [node name="Sketchfab_Scene" parent="Pivot" instance=ExtResource("1_kbe3k")]
 transform = Transform3D(-0.031, 0, -4.68087e-09, 0, 0.031, 0, 4.68087e-09, 0, -0.031, 0, 0, 0)
 
+[node name="Player_interactor" parent="Pivot" node_paths=PackedStringArray("player") instance=ExtResource("2_k5mi5")]
+player = NodePath("../..")
+
+[node name="CollisionShape3D" parent="Pivot/Player_interactor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, 0.203369, -0.217285)
+shape = SubResource("BoxShape3D_36twi")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.316167, 0)
 shape = SubResource("CapsuleShape3D_wqo6f")
+
+[editable path="Pivot/Player_interactor"]

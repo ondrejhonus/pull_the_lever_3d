@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://f258o3kmbxvy"]
+
+[ext_resource type="PackedScene" uid="uid://c424w6mxq134u" path="res://models/lever.glb" id="1_8ums4"]
+[ext_resource type="Script" path="res://lever.gd" id="1_16u23"]
+[ext_resource type="PackedScene" uid="uid://l7rqmf0c4qbo" path="res://interactable.tscn" id="2_nikx3"]
+[ext_resource type="PackedScene" uid="uid://b608ntyxfaa6q" path="res://models/traintrack-switch.glb" id="5_8r6w3"]
+[ext_resource type="PackedScene" uid="uid://bgxj5mgqbxd6f" path="res://models/traintrack-switch-pulled.glb" id="6_eo3my"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuyuw"]
+size = Vector3(1, 0.734863, 1.19824)
+
+[node name="lever" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_16u23")
+
+[node name="lever" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.85, -0.105, 6.608)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lever"]
+transform = Transform3D(-1.82, 0, 1.59109e-07, 0, 1.82, 0, -1.59109e-07, 0, -1.82, 0.138268, 0.863726, 0.15905)
+shape = SubResource("BoxShape3D_fuyuw")
+
+[node name="unpulled" parent="lever" instance=ExtResource("1_8ums4")]
+
+[node name="pulled" parent="lever" instance=ExtResource("1_8ums4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.25287, 0, -0.135638)
+visible = false
+
+[node name="pull_text" type="Label3D" parent="."]
+transform = Transform3D(5.1339e-07, 0, 3.915, 0, 3.915, 0, -3.915, 0, 5.1339e-07, 0.0576997, 3.11037, 8.04265)
+visible = false
+text = "Press 'E' to pull the lever"
+
+[node name="tracks" type="Node3D" parent="."]
+
+[node name="unpulled" parent="tracks" instance=ExtResource("5_8r6w3")]
+
+[node name="pulled" parent="tracks" instance=ExtResource("6_eo3my")]
+visible = false
+
+[node name="Interactable" parent="." instance=ExtResource("2_nikx3")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1.825, 0, 0, 0, 1.825, 0, 0, 0, 1.825, 2.63357, 0.616672, 6.5393)
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]
