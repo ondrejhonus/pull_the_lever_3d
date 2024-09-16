@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8gk18etyb7f5"]
+
+[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5qiw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hypvi"]
+sky_material = SubResource("ProceduralSkyMaterial_j5qiw")
+
+[sub_resource type="Environment" id="Environment_68nil"]
+background_mode = 2
+sky = SubResource("Sky_hypvi")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg7ml"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ep8ls"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_68nil")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.309204, -0.392928, 0, -0.785857, 0.618408, -0.5, 0.535557, 0.680572, 0, 4.93157, 4.41881)
+light_color = Color(0.729086, 0.815334, 0.874924, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_aiox2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970396, 0)
+
+[node name="CamPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17091, 2.85399)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0.545, 0, 0, 0, 0.545, 0, 0, 0, 0.545, 0, 0, 0)
+shape = SubResource("BoxShape3D_cg7ml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 0.955, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ep8ls")

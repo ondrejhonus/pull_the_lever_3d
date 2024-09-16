@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://pen7cop4xhge"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_65pg7"]
+[ext_resource type="PackedScene" uid="uid://q5atrb8ghjqe" path="res://models/stickman_low_poly.glb" id="1_kbe3k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqo6f"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_65pg7")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="Pivot" instance=ExtResource("1_kbe3k")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.11747, 0)
+shape = SubResource("CapsuleShape3D_wqo6f")
