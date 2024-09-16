@@ -11,8 +11,8 @@ script = ExtResource("1_65pg7")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Sketchfab_Scene" parent="Pivot" instance=ExtResource("1_kbe3k")]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+transform = Transform3D(-0.001, 0, -8.74228e-11, 0, 0.001, 0, 8.74228e-11, 0, -0.001, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.11747, 0)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.316167, 0)
 shape = SubResource("CapsuleShape3D_wqo6f")
