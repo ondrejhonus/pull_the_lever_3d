@@ -1,48 +1,64 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=10 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://player.tscn" id="1_aiox2"]
+[ext_resource type="PackedScene" uid="uid://oqeg5ndbxii1" path="res://models/lowpoly_train_rails.glb" id="2_dga3g"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5qiw"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bxyxv"]
+sky_top_color = Color(0.677272, 0.791845, 0.927559, 1)
+sky_horizon_color = Color(0.76728, 0.796232, 0.831004, 1)
+ground_bottom_color = Color(0.391847, 0.393082, 0.396458, 1)
+ground_horizon_color = Color(0.76728, 0.796232, 0.831004, 1)
 
-[sub_resource type="Sky" id="Sky_hypvi"]
-sky_material = SubResource("ProceduralSkyMaterial_j5qiw")
+[sub_resource type="Sky" id="Sky_3twfj"]
+sky_material = SubResource("ProceduralSkyMaterial_bxyxv")
 
-[sub_resource type="Environment" id="Environment_68nil"]
+[sub_resource type="Environment" id="Environment_mf8uj"]
 background_mode = 2
-sky = SubResource("Sky_hypvi")
+sky = SubResource("Sky_3twfj")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_ep8ls"]
+[sub_resource type="BoxMesh" id="BoxMesh_63wgi"]
+
+[sub_resource type="Skin" id="Skin_dg3rn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg7ml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fjx8"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_68nil")
+environment = SubResource("Environment_mf8uj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.309204, -0.392928, 0, -0.785857, 0.618408, -0.5, 0.535557, 0.680572, 0, 4.93157, 4.41881)
-light_color = Color(0.729086, 0.815334, 0.874924, 1)
+light_color = Color(0.144063, 0.144063, 0.144063, 1)
+light_energy = 4.0
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_aiox2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970396, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.070962, 0)
 
 [node name="CamPivot" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 2.10468, 8.61865)
+transform = Transform3D(1, 0, 0, 0, 0.809017, 0.587785, 0, -0.587785, 0.809017, 4.76837e-07, 2.92298, 7.44629)
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(40.365, 0, 0, 0, 0.1, 0, 0, 0, 12.96, 0, -0.05, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_ep8ls")
+mesh = SubResource("BoxMesh_63wgi")
+skin = SubResource("Skin_dg3rn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("BoxShape3D_cg7ml")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="StaticBody3D" instance=ExtResource("2_dga3g")]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.0567106, -1.17416)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(100.735, 0, 0, 0, 0.16, 0, 0, 0, 0.53, 0, 0, -0.998465)
+shape = SubResource("BoxShape3D_2fjx8")
