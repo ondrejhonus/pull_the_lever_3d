@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://pen7cop4xhge"]
 
 [ext_resource type="PackedScene" uid="uid://q5atrb8ghjqe" path="res://models/stickman_low_poly.glb" id="1_kbe3k"]
-[ext_resource type="PackedScene" path="res://Scenes/player_interactor.tscn" id="2_k5mi5"]
+[ext_resource type="PackedScene" uid="uid://c4q824gj686dl" path="res://scenes/player_interactor.tscn" id="2_k5mi5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_36twi"]
 size = Vector3(0.313965, 0.593262, 0.764648)

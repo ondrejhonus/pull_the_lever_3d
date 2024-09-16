@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_pxjb0"]
-[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://Scenes/player.tscn" id="2_p5sns"]
+[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="2_p5sns"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_7ae03"]
-[ext_resource type="PackedScene" path="res://Scenes/train.tscn" id="4_1gbqm"]
+[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://scenes/train.tscn" id="4_1gbqm"]
 [ext_resource type="Script" path="res://scripts/train.gd" id="5_lmkh5"]
-[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://Scenes/lever.tscn" id="6_r228n"]
+[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="6_r228n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
 panorama = ExtResource("1_pxjb0")

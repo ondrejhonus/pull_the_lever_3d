@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c424w6mxq134u" path="res://models/lever.glb" id="1_8ums4"]
 [ext_resource type="Script" path="res://scripts/lever.gd" id="1_16u23"]
-[ext_resource type="PackedScene" path="res://Scenes/interactable.tscn" id="2_nikx3"]
+[ext_resource type="PackedScene" uid="uid://l7rqmf0c4qbo" path="res://scenes/interactable.tscn" id="2_nikx3"]
 [ext_resource type="PackedScene" uid="uid://b608ntyxfaa6q" path="res://models/traintrack-switch.glb" id="5_8r6w3"]
 [ext_resource type="PackedScene" uid="uid://bgxj5mgqbxd6f" path="res://models/traintrack-switch-pulled.glb" id="6_eo3my"]
 
