@@ -1,10 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://pen7cop4xhge"]
+[gd_scene load_steps=16 format=3 uid="uid://pen7cop4xhge"]
 
-[ext_resource type="PackedScene" uid="uid://q5atrb8ghjqe" path="res://models/stickman_low_poly.glb" id="1_kbe3k"]
+[ext_resource type="PackedScene" uid="uid://dw4hjk4gio6j2" path="res://models/Walking.fbx" id="2_68imv"]
 [ext_resource type="PackedScene" uid="uid://c4q824gj686dl" path="res://scenes/player_interactor.tscn" id="2_k5mi5"]
+[ext_resource type="Animation" uid="uid://b7fsbve0vivla" path="res://models/walk.res" id="3_5tm0c"]
+[ext_resource type="Animation" uid="uid://b1a8a8svq55ss" path="res://models/idle.res" id="4_xpb4o"]
+[ext_resource type="Animation" uid="uid://blqgnu8e5tm7v" path="res://models/jump.res" id="5_dd14q"]
+[ext_resource type="Animation" uid="uid://jxxg454q28be" path="res://models/falling.res" id="6_3dgtr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_36twi"]
 size = Vector3(0.313965, 0.593262, 0.764648)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6h2a"]
+_data = {
+"falling": ExtResource("6_3dgtr"),
+"idle": ExtResource("4_xpb4o"),
+"jump": ExtResource("5_dd14q"),
+"walk": ExtResource("3_5tm0c")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wffec"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3eius"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ofanu"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xmb5l"]
+animation = &"falling"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8m741"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wffec")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_3eius")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_ofanu")
+blend_point_2/pos = 2.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_xmb5l")
+blend_point_3/pos = 3.0
+min_space = 0.0
+max_space = 3.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3lq6p"]
+graph_offset = Vector2(-25.3674, -26.3569)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_8m741")
+nodes/BlendSpace1D/position = Vector2(80, 60)
+nodes/output/position = Vector2(320, 100)
+node_connections = [&"output", 0, &"BlendSpace1D"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqo6f"]
 
@@ -12,15 +55,25 @@ size = Vector3(0.313965, 0.593262, 0.764648)
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="Sketchfab_Scene" parent="Pivot" instance=ExtResource("1_kbe3k")]
-transform = Transform3D(-0.031, 0, -4.68087e-09, 0, 0.031, 0, 4.68087e-09, 0, -0.031, 0, 0, 0)
-
 [node name="Player_interactor" parent="Pivot" node_paths=PackedStringArray("player") instance=ExtResource("2_k5mi5")]
 player = NodePath("../..")
 
 [node name="CollisionShape3D" parent="Pivot/Player_interactor" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, 0.203369, -0.217285)
 shape = SubResource("BoxShape3D_36twi")
+
+[node name="Walking" parent="Pivot" instance=ExtResource("2_68imv")]
+transform = Transform3D(-17.735, 0, 1.55044e-06, 0, 17.735, 0, -1.55044e-06, 0, -17.735, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Pivot/Walking"]
+libraries = {
+"": SubResource("AnimationLibrary_t6h2a")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Pivot/Walking"]
+tree_root = SubResource("AnimationNodeBlendTree_3lq6p")
+anim_player = NodePath("../AnimationPlayer2")
+parameters/BlendSpace1D/blend_position = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.316167, 0)
