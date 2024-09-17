@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=20 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_pxjb0"]
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="2_p5sns"]
@@ -48,6 +48,9 @@ _data = {
 }
 point_count = 27
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6ajt"]
+size = Vector3(0.001, 2.1521, 3.28988)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Dir_light" type="DirectionalLight3D" parent="."]
@@ -60,7 +63,7 @@ shadow_normal_bias = 1.444
 environment = SubResource("Environment_1x41d")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(40.365, 0, 0, 0, 0.1, 0, 0, 0, 12.96, 0, -0.05, 0)
+transform = Transform3D(58.615, 0, 0, 0, 0.1, 0, 0, 0, 17.5, 0, -0.05, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_cg7ml")
@@ -125,3 +128,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00525165, -0.0722359, -0.2
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.124114, 2.43831, 3.6534)
+
+[node name="Borders" type="StaticBody3D" parent="."]
+transform = Transform3D(7.58, 0, 0, 0, 7.58, 0, 0, 0, 7.58, -9.04874, 0, 0.764808)
+
+[node name="behind" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.14031, 0.399256, 0.640381)
+shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="left" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243314, 0.252319, 0.160095)
+shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="right" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59507, 0.477865, 0.32019)
+shape = SubResource("BoxShape3D_g6ajt")
