@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=21 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_pxjb0"]
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="2_p5sns"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/train.gd" id="5_lmkh5"]
 [ext_resource type="Script" path="res://scripts/train_paths.gd" id="5_r6wrd"]
 [ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="6_r228n"]
+[ext_resource type="Script" path="res://scenes/countdown.gd" id="9_a0vn4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
 panorama = ExtResource("1_pxjb0")
@@ -43,7 +44,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_kdxc4"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.115, 0, 0, 0, 0, 0, 0, 0, 0, 18.4662, 0, 0, 0, 0, 0, 0, 0, 0, 19.718, 0, -0.083, 0, 0, 0, 0, 0, 0, 20.129, 0, -0.127, 0, 0, 0, 0, 0, 0, 20.615, 0, -0.213, 0, 0, 0, 0, 0, 0, 21.062, 0, -0.304, 0, 0, 0, 0, 0, 0, 21.482, 0, -0.373, 0, 0, 0, 0, 0, 0, 21.753, 0, -0.436, 0, 0, 0, 0, 0, 0, 21.865, 0, -0.468, 0, 0, 0, 0, 0, 0, 21.96, 0, -0.511, 0, 0, 0, 0, 0, 0, 22.05, 0, -0.537, 0, 0, 0, 0, 0, 0, 22.136, 0, -0.578, 0, 0, 0, 0, 0, 0, 22.274, 0, -0.604, 0, 0, 0, 0, 0, 0, 22.568, 0, -0.65, 0, 0, 0, 0, 0, 0, 22.964, 0, -0.747, 0, 0, 0, 0, 0, 0, 23.314, 0, -0.819, 0, 0, 0, 0, 0, 0, 23.672, 0, -0.874, 0, 0, 0, 0, 0, 0, 23.995, 0, -0.917, 0, 0, 0, 0, 0, 0, 24.322, 0, -0.973, 0, 0, 0, 0, 0, 0, 24.7, 0, -1.022, 0, 0, 0, 0, 0, 0, 25.185, 0, -1.09, 0, 0, 0, 0, 0, 0, 25.673, 0, -1.129, 0, 0, 0, 0, 0, 0, 26.025, 0, -1.148, 0, 0, 0, 0, 0, 0, 27.1531, 0, -1.14521, 0, 0, 0, 0, 0, 0, 28.731, 0, -1.09505, 0, 0, 0, 0, 0, 0, 30.3821, 0, -1.10493, 0, 0, 0, 0, 0, 0, 47.375, 0, -1.06152),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -79.705, 0, 0, 0, 0, 0, 0, 0, 0, 18.4662, 0, 0, 0, 0, 0, 0, 0, 0, 19.718, 0, -0.083, 0, 0, 0, 0, 0, 0, 20.129, 0, -0.127, 0, 0, 0, 0, 0, 0, 20.615, 0, -0.213, 0, 0, 0, 0, 0, 0, 21.062, 0, -0.304, 0, 0, 0, 0, 0, 0, 21.482, 0, -0.373, 0, 0, 0, 0, 0, 0, 21.753, 0, -0.436, 0, 0, 0, 0, 0, 0, 21.865, 0, -0.468, 0, 0, 0, 0, 0, 0, 21.96, 0, -0.511, 0, 0, 0, 0, 0, 0, 22.05, 0, -0.537, 0, 0, 0, 0, 0, 0, 22.136, 0, -0.578, 0, 0, 0, 0, 0, 0, 22.274, 0, -0.604, 0, 0, 0, 0, 0, 0, 22.568, 0, -0.65, 0, 0, 0, 0, 0, 0, 22.964, 0, -0.747, 0, 0, 0, 0, 0, 0, 23.314, 0, -0.819, 0, 0, 0, 0, 0, 0, 23.672, 0, -0.874, 0, 0, 0, 0, 0, 0, 23.995, 0, -0.917, 0, 0, 0, 0, 0, 0, 24.322, 0, -0.973, 0, 0, 0, 0, 0, 0, 24.7, 0, -1.022, 0, 0, 0, 0, 0, 0, 25.185, 0, -1.09, 0, 0, 0, 0, 0, 0, 25.673, 0, -1.129, 0, 0, 0, 0, 0, 0, 26.025, 0, -1.148, 0, 0, 0, 0, 0, 0, 27.1531, 0, -1.14521, 0, 0, 0, 0, 0, 0, 28.731, 0, -1.09505, 0, 0, 0, 0, 0, 0, 30.3821, 0, -1.10493, 0, 0, 0, 0, 0, 0, 47.375, 0, -1.06152),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 27
@@ -99,7 +100,7 @@ loop = false
 script = ExtResource("5_r6wrd")
 
 [node name="Train" parent="Train_paths/Straight/follow" instance=ExtResource("4_1gbqm")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288739, 0.0199992, -538.325)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288405, 0.0199992, 245.899)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("5_lmkh5")
@@ -109,12 +110,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8568, 0.0556297, -0.59212
 curve = SubResource("Curve3D_kdxc4")
 
 [node name="follow" type="PathFollow3D" parent="Train_paths/Left"]
-transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -24.115, 0, 0)
+transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -79.705, 0, 0)
 loop = false
 script = ExtResource("5_r6wrd")
 
 [node name="Train" parent="Train_paths/Left/follow" instance=ExtResource("4_1gbqm")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288506, 0.0199992, -4.06885)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288491, 0.0199992, 19.5522)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("5_lmkh5")
@@ -143,3 +144,15 @@ shape = SubResource("BoxShape3D_g6ajt")
 [node name="right" type="CollisionShape3D" parent="Borders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59507, 0.477865, 0.32019)
 shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(29.49, 0, 0, 0, 29.49, 0, 0, 0, 29.49, 0, 1.29874, 0)
+script = ExtResource("9_a0vn4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Label3D"]
+offset_left = 18.0
+offset_top = 963.0
+offset_right = 1958.0
+offset_bottom = 1103.0
+theme_override_font_sizes/normal_font_size = 97
+text = "text"
