@@ -100,7 +100,7 @@ loop = false
 script = ExtResource("5_r6wrd")
 
 [node name="Train" parent="Train_paths/Straight/follow" instance=ExtResource("4_1gbqm")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288405, 0.0199992, 245.899)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.028841, 0.961166, 226.888)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("5_lmkh5")
@@ -150,9 +150,11 @@ transform = Transform3D(29.49, 0, 0, 0, 29.49, 0, 0, 0, 29.49, 0, 1.29874, 0)
 script = ExtResource("9_a0vn4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Label3D"]
-offset_left = 18.0
-offset_top = 963.0
-offset_right = 1958.0
-offset_bottom = 1103.0
-theme_override_font_sizes/normal_font_size = 97
-text = "text"
+offset_left = -8.0
+offset_top = 984.0
+offset_right = 1932.0
+offset_bottom = 1109.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 70
+text = " The train arrives in XX"
