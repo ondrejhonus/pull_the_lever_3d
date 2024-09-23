@@ -1,17 +1,17 @@
 [gd_scene load_steps=21 format=3 uid="uid://b8gk18etyb7f5"]
 
-[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_pxjb0"]
-[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="2_p5sns"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_7ae03"]
-[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://scenes/train.tscn" id="4_1gbqm"]
-[ext_resource type="Script" path="res://scripts/turn_train.gd" id="5_5mcfs"]
-[ext_resource type="Script" path="res://scripts/train.gd" id="5_lmkh5"]
-[ext_resource type="Script" path="res://scripts/train_paths.gd" id="5_r6wrd"]
-[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="6_r228n"]
-[ext_resource type="Script" path="res://scenes/countdown.gd" id="9_a0vn4"]
+[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_hp3vt"]
+[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="2_gs04r"]
+[ext_resource type="Script" path="res://scripts/turn_train.gd" id="3_781dt"]
+[ext_resource type="Script" path="res://scripts/train_paths.gd" id="4_sdjw5"]
+[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://scenes/train.tscn" id="5_yc3h4"]
+[ext_resource type="Script" path="res://scripts/train.gd" id="6_ekacr"]
+[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="7_noeym"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="8_nliem"]
+[ext_resource type="Script" path="res://scenes/countdown.gd" id="9_06qkx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
-panorama = ExtResource("1_pxjb0")
+panorama = ExtResource("1_hp3vt")
 
 [sub_resource type="Sky" id="Sky_ekdab"]
 sky_material = SubResource("PanoramaSkyMaterial_hicgy")
@@ -76,7 +76,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x0unw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="Tracks" parent="StaticBody3D" instance=ExtResource("6_r228n")]
+[node name="Tracks" parent="StaticBody3D" instance=ExtResource("2_gs04r")]
 transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -5.97265, -0.0321507, -0.553017)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76959, 0.466858, -1.12299)
 shape = SubResource("BoxShape3D_wh8c7")
 
 [node name="Train_paths" type="Node3D" parent="."]
-script = ExtResource("5_5mcfs")
+script = ExtResource("3_781dt")
 
 [node name="Straight" type="Path3D" parent="Train_paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.015, 0, -0.558716)
@@ -97,13 +97,13 @@ curve = SubResource("Curve3D_44ibo")
 [node name="follow" type="PathFollow3D" parent="Train_paths/Straight"]
 transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -112.04, 0, 0)
 loop = false
-script = ExtResource("5_r6wrd")
+script = ExtResource("4_sdjw5")
 
-[node name="Train" parent="Train_paths/Straight/follow" instance=ExtResource("4_1gbqm")]
+[node name="Train" parent="Train_paths/Straight/follow" instance=ExtResource("5_yc3h4")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.028841, 0.961166, 226.888)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("5_lmkh5")
+script = ExtResource("6_ekacr")
 
 [node name="Left" type="Path3D" parent="Train_paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8568, 0.0556297, -0.592122)
@@ -112,23 +112,23 @@ curve = SubResource("Curve3D_kdxc4")
 [node name="follow" type="PathFollow3D" parent="Train_paths/Left"]
 transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -79.705, 0, 0)
 loop = false
-script = ExtResource("5_r6wrd")
+script = ExtResource("4_sdjw5")
 
-[node name="Train" parent="Train_paths/Left/follow" instance=ExtResource("4_1gbqm")]
+[node name="Train" parent="Train_paths/Left/follow" instance=ExtResource("5_yc3h4")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288491, 0.0199992, 19.5522)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("5_lmkh5")
+script = ExtResource("6_ekacr")
 
-[node name="Player" parent="." instance=ExtResource("2_p5sns")]
+[node name="Player" parent="." instance=ExtResource("7_noeym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03881, 0.070962, 1.58704)
-script = ExtResource("3_7ae03")
+script = ExtResource("8_nliem")
 
 [node name="CamPivot" type="Marker3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00525165, -0.0722359, -0.248094)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.124114, 2.43831, 3.6534)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.0446, 2.43831, 3.6534)
 
 [node name="Borders" type="StaticBody3D" parent="."]
 transform = Transform3D(7.58, 0, 0, 0, 7.58, 0, 0, 0, 7.58, -9.04874, 0, 0.764808)
@@ -147,7 +147,7 @@ shape = SubResource("BoxShape3D_g6ajt")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(29.49, 0, 0, 0, 29.49, 0, 0, 0, 29.49, 0, 1.29874, 0)
-script = ExtResource("9_a0vn4")
+script = ExtResource("9_06qkx")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Label3D"]
 offset_left = -8.0
