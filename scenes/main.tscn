@@ -120,14 +120,14 @@ collision_mask = 0
 script = ExtResource("5_lmkh5")
 
 [node name="Player" parent="." instance=ExtResource("2_p5sns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03881, 0.070962, 1.58704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.07, 1.5)
 script = ExtResource("3_7ae03")
 
 [node name="CamPivot" type="Marker3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00525165, -0.0722359, -0.248094)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CamPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.124114, 2.43831, 3.6534)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.052, 2.5, 4)
 
 [node name="Borders" type="StaticBody3D" parent="."]
 transform = Transform3D(7.58, 0, 0, 0, 7.58, 0, 0, 0, 7.58, -9.04874, 0, 0.764808)
