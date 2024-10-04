@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var globals = get_node("/root/global")
 
-func _on_interactable_interacted(interactor: Interactor) -> void:
+func _on_interactable_interacted(_interactor: Interactor) -> void:
 	if (globals.time_elapsed < 7):
 		if globals.is_pulled:
 			$lever/pulled.visible = false

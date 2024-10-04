@@ -160,10 +160,12 @@ theme_override_font_sizes/normal_font_size = 70
 text = " The train arrives in XX"
 
 [node name="Label" type="Label" parent="Label3D"]
-offset_right = 1920.0
+offset_left = 47.0
+offset_right = 1864.0
 offset_bottom = 232.0
 theme_override_constants/outline_size = 27
 theme_override_font_sizes/font_size = 50
-text = "Kill blabl aor let the trtasjidafksjbhsjio;gfjo;ojn oiwjrf"
+text = "Kill blabl aor let the trtasjidafksjbhsjio;gfjo;ojn oiwjrfadasdasdasdasdasdasdasdasdadsasdad"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2

@@ -2,6 +2,7 @@ extends Node
 
 var is_pulled = false
 var current_level = 1
+
 var level_sentence
 var sentences = [
 	"Let the train run over Adolf Hitler, or pull the lever and kill Osama Bin Laden", # 1
