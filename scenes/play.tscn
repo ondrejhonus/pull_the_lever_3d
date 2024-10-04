@@ -1,0 +1,169 @@
+[gd_scene load_steps=21 format=3 uid="uid://b8gk18etyb7f5"]
+
+[ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_85bjs"]
+[ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="2_b5sfn"]
+[ext_resource type="Script" path="res://scripts/turn_train.gd" id="3_ayncy"]
+[ext_resource type="Script" path="res://scripts/train_paths.gd" id="4_nmb7g"]
+[ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://scenes/train.tscn" id="5_lhvu3"]
+[ext_resource type="Script" path="res://scripts/train.gd" id="6_5yc2x"]
+[ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="7_y0uq4"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="8_67hni"]
+[ext_resource type="Script" path="res://scenes/countdown.gd" id="9_iy1h8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hicgy"]
+panorama = ExtResource("1_85bjs")
+
+[sub_resource type="Sky" id="Sky_ekdab"]
+sky_material = SubResource("PanoramaSkyMaterial_hicgy")
+
+[sub_resource type="Environment" id="Environment_1x41d"]
+background_mode = 2
+sky = SubResource("Sky_ekdab")
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg7ml"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pb5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0unw"]
+albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7w1ub"]
+size = Vector3(0.604584, 0.266113, 0.281143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wh8c7"]
+size = Vector3(51.8392, 1.93372, 1.72168)
+
+[sub_resource type="Curve3D" id="Curve3D_44ibo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -112.04, 0, 0, 0, 0, 0, 0, 0, 0, 30.715, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_kdxc4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -79.705, 0, 0, 0, 0, 0, 0, 0, 0, 18.4662, 0, 0, 0, 0, 0, 0, 0, 0, 19.718, 0, -0.083, 0, 0, 0, 0, 0, 0, 20.129, 0, -0.127, 0, 0, 0, 0, 0, 0, 20.615, 0, -0.213, 0, 0, 0, 0, 0, 0, 21.062, 0, -0.304, 0, 0, 0, 0, 0, 0, 21.482, 0, -0.373, 0, 0, 0, 0, 0, 0, 21.753, 0, -0.436, 0, 0, 0, 0, 0, 0, 21.865, 0, -0.468, 0, 0, 0, 0, 0, 0, 21.96, 0, -0.511, 0, 0, 0, 0, 0, 0, 22.05, 0, -0.537, 0, 0, 0, 0, 0, 0, 22.136, 0, -0.578, 0, 0, 0, 0, 0, 0, 22.274, 0, -0.604, 0, 0, 0, 0, 0, 0, 22.568, 0, -0.65, 0, 0, 0, 0, 0, 0, 22.964, 0, -0.747, 0, 0, 0, 0, 0, 0, 23.314, 0, -0.819, 0, 0, 0, 0, 0, 0, 23.672, 0, -0.874, 0, 0, 0, 0, 0, 0, 23.995, 0, -0.917, 0, 0, 0, 0, 0, 0, 24.322, 0, -0.973, 0, 0, 0, 0, 0, 0, 24.7, 0, -1.022, 0, 0, 0, 0, 0, 0, 25.185, 0, -1.09, 0, 0, 0, 0, 0, 0, 25.673, 0, -1.129, 0, 0, 0, 0, 0, 0, 26.025, 0, -1.148, 0, 0, 0, 0, 0, 0, 27.1531, 0, -1.14521, 0, 0, 0, 0, 0, 0, 28.731, 0, -1.09505, 0, 0, 0, 0, 0, 0, 30.3821, 0, -1.10493, 0, 0, 0, 0, 0, 0, 47.375, 0, -1.06152),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 27
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6ajt"]
+size = Vector3(0.001, 2.1521, 3.28988)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Dir_light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.973568, -0.161079, -0.161925, 0.228284, 0.663766, 0.712251, -0.00724825, -0.73039, 0.682992, -5.83962, 3.765, 3.05117)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.444
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1x41d")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(58.615, 0, 0, 0, 0.1, 0, 0, 0, 17.5, 0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_cg7ml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76837e-06, 0)
+mesh = SubResource("BoxMesh_2pb5k")
+surface_material_override/0 = SubResource("StandardMaterial3D_x0unw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Tracks" parent="StaticBody3D" instance=ExtResource("2_b5sfn")]
+transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, -5.97265, -0.0321507, -0.553017)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97606, 0.102783, 0.273155)
+shape = SubResource("BoxShape3D_7w1ub")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76959, 0.466858, -1.12299)
+shape = SubResource("BoxShape3D_wh8c7")
+
+[node name="Train_paths" type="Node3D" parent="."]
+script = ExtResource("3_ayncy")
+
+[node name="Straight" type="Path3D" parent="Train_paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.015, 0, -0.558716)
+curve = SubResource("Curve3D_44ibo")
+
+[node name="follow" type="PathFollow3D" parent="Train_paths/Straight"]
+transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -112.04, 0, 0)
+loop = false
+script = ExtResource("4_nmb7g")
+
+[node name="Train" parent="Train_paths/Straight/follow" instance=ExtResource("5_lhvu3")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.028841, 0.961166, 226.888)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("6_5yc2x")
+
+[node name="Left" type="Path3D" parent="Train_paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8568, 0.0556297, -0.592122)
+curve = SubResource("Curve3D_kdxc4")
+
+[node name="follow" type="PathFollow3D" parent="Train_paths/Left"]
+transform = Transform3D(-3.27835e-09, 0, -0.075, 0, 0.075, 0, 0.075, 0, -3.27835e-09, -79.705, 0, 0)
+loop = false
+script = ExtResource("4_nmb7g")
+
+[node name="Train" parent="Train_paths/Left/follow" instance=ExtResource("5_lhvu3")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288491, 0.0199992, 19.5522)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("6_5yc2x")
+
+[node name="Player" parent="." instance=ExtResource("7_y0uq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03881, 0.070962, 1.58704)
+script = ExtResource("8_67hni")
+
+[node name="CamPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00525165, -0.0722359, -0.248094)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.0446, 2.43831, 3.6534)
+
+[node name="Borders" type="StaticBody3D" parent="."]
+transform = Transform3D(7.58, 0, 0, 0, 7.58, 0, 0, 0, 7.58, -9.04874, 0, 0.764808)
+
+[node name="behind" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.14031, 0.399256, 0.640381)
+shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="left" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243314, 0.252319, 0.160095)
+shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="right" type="CollisionShape3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59507, 0.477865, 0.32019)
+shape = SubResource("BoxShape3D_g6ajt")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(29.49, 0, 0, 0, 29.49, 0, 0, 0, 29.49, 0, 1.29874, 0)
+script = ExtResource("9_iy1h8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Label3D"]
+offset_left = -8.0
+offset_top = 984.0
+offset_right = 1932.0
+offset_bottom = 1109.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 70
+text = " The train arrives in XX"
+
+[node name="Label" type="Label" parent="Label3D"]
+offset_right = 1920.0
+offset_bottom = 232.0
+theme_override_constants/outline_size = 27
+theme_override_font_sizes/font_size = 50
+text = "Kill blabl aor let the trtasjidafksjbhsjio;gfjo;ojn oiwjrf"
+horizontal_alignment = 1
+vertical_alignment = 1
