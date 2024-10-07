@@ -9,5 +9,13 @@ var sentences = [
 	"Let the train run over 4 children with cancer, or kill a scientist that cures cancer" # 2
 ]
 var time_elapsed = 0
-var count_ppl_one = [1]
-var count_ppl_two = [1]
+# Here you basically set how many people are on which track on a level
+# One index is one level
+var count_ppl_one = [
+	1, # 1
+	4  # 2
+	]
+var count_ppl_two = [
+	1, # 1
+	1  # 2
+	]
