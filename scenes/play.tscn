@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8gk18etyb7f5"]
+[gd_scene load_steps=20 format=3 uid="uid://b8gk18etyb7f5"]
 
 [ext_resource type="Texture2D" uid="uid://dlnw3ncytrq7m" path="res://models/Stylized Sky Background (1).png" id="1_85bjs"]
 [ext_resource type="PackedScene" uid="uid://f258o3kmbxvy" path="res://scenes/lever.tscn" id="2_b5sfn"]
 [ext_resource type="Script" path="res://scripts/turn_train.gd" id="3_ayncy"]
 [ext_resource type="Script" path="res://scripts/train_paths.gd" id="4_nmb7g"]
 [ext_resource type="PackedScene" uid="uid://cjyehierbnrut" path="res://scenes/train.tscn" id="5_lhvu3"]
-[ext_resource type="Script" path="res://scripts/train.gd" id="6_5yc2x"]
 [ext_resource type="PackedScene" uid="uid://pen7cop4xhge" path="res://scenes/player.tscn" id="7_y0uq4"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="8_67hni"]
 [ext_resource type="Script" path="res://scripts/countdown.gd" id="9_iy1h8"]
@@ -103,7 +102,6 @@ script = ExtResource("4_nmb7g")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.028841, 0.961166, 226.888)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("6_5yc2x")
 
 [node name="Left" type="Path3D" parent="Train_paths"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8568, 0.0556297, -0.592122)
@@ -118,7 +116,6 @@ script = ExtResource("4_nmb7g")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0288491, 0.0199992, 19.5522)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("6_5yc2x")
 
 [node name="Player" parent="." instance=ExtResource("7_y0uq4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03881, 0.070962, 1.58704)
