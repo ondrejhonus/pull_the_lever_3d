@@ -1,15 +1,16 @@
 extends Node
 
 var is_pulled = false
-var current_level = 1
+var current_level = 0
+var sentence
 
-var level_sentence
 var sentences = [
-	["Adolf Hitler", "Osama Bin Laden"], # 1
-	["4 children with cancer", "a scientist that cures cancer"] # 2
+	["4 people", "1 person"], # 1
+	["1 person", "all your money"], # 2
+	["5 people", "your mum"], # 3
+	["you", "4 people"] # 4
 	]
 	
-var sentence = "Let the train run over %s, or pull the lever and kill %s" % sentences[current_level-1]
 var time_elapsed = 0
 # Here you basically set how many people are on which track on a level
 # One index is one level
