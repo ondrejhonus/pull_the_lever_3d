@@ -3,6 +3,7 @@ extends Node
 var is_pulled = false
 var current_level = 0
 var sentence
+var time_elapsed = 0
 
 var sentences = [
 	["4 people", "1 person"], # 1
@@ -12,10 +13,10 @@ var sentences = [
 	["grandma", "a scientist about to cure cancer"] # 5
 	]
 	
-var time_elapsed = 0
+
 # Here you basically set how many people are on which track on a level
 # One index is one level
-# If you want a specific item, set an ID for it thats more than 10 and then work with that
+# If you want a specific item, set an ID for it thats a higher number than lets say 10 and then work with that
 # eg. moneyID = 69
 # Track one
 var count_ppl_one = [
