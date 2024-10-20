@@ -15,13 +15,21 @@ var sentences = [
 var time_elapsed = 0
 # Here you basically set how many people are on which track on a level
 # One index is one level
+# If you want a specific item, set an ID for it thats more than 10 and then work with that
+# eg. moneyID = 69
 # Track one
 var count_ppl_one = [
-	1, # 1
-	4  # 2
+	4, # 1
+	1, # 2
+	5, # 3
+	1, # 4
+	1, # 5
 	]
 # Track two
 var count_ppl_two = [
 	1, # 1
-	1  # 2
+	69,  # 2
+	1, # 3
+	4, # 4
+	1, # 5
 	]
