@@ -8,7 +8,8 @@ var sentences = [
 	["4 people", "1 person"], # 1
 	["1 person", "all your money"], # 2
 	["5 people", "your mum"], # 3
-	["you", "4 people"] # 4
+	["you", "4 people"], # 4
+	["grandma", "a scientist about to cure cancer"] # 5
 	]
 	
 var time_elapsed = 0
